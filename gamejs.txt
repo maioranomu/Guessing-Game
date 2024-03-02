@@ -1,0 +1,58 @@
+function isAlpha(str) {
+    return /^[a-zA-Z]+$/.test(str);}
+    function isDigit(str) {
+        return /^\d+$/.test(str);}
+    function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        
+    
+    let difficulty = prompt("Qual dificuldade você quer? [1 FACIL | 2 MEDIO | 3 DIFICIL] ");
+    while (difficulty !== "1" && difficulty !== "2" && difficulty !== "3") {
+        difficulty = prompt("Qual dificuldade você quer? [1 FACIL | 2 MEDIO | 3 DIFICIL] ");
+    }
+    
+    switch (difficulty) {
+        case "1":
+            difficulty = 10;
+            break;
+        case "2":
+            difficulty = 50;
+            break;
+        case "3":
+            difficulty = 100;
+            break;
+    }
+    
+    
+    
+    var rannum = getRandomIntInclusive(0, difficulty);
+    var tries = 0;
+    var maxtries = 6;
+    console.log(rannum);
+    
+    while (tries < maxtries) {
+    var guess = prompt("Qual numero você acha que é?");
+    
+    while (isAlpha(guess) || guess ===""){
+        var guess = prompt("Qual numero você acha que é?");}
+    
+    if (isDigit(guess)){
+    var guess = parseInt(guess);}
+    
+    if (guess === rannum) {
+        console.log("Parabéns, você acertou!");
+        break;}
+    
+    else if (guess < rannum) {
+        console.log("Mais");}
+    
+    else if (guess > rannum) {
+        console.log("Menos");
+    }    
+    }
+    
+    if (tries > maxtries) {
+        console.log("Você perdeu!");}
